@@ -43,8 +43,13 @@ DIFFUSION_MODELS=(
 
 DETECTION_MODELS=(
  "https://huggingface.co/JunkyByte/easy_ViTPose/resolve/main/onnx/wholebody/vitpose-l-wholebody.onnx"
+ "https://huggingface.co/JunkyByte/easy_ViTPose/resolve/main/onnx/wholebody/vitpose-l-wholebody.onnx"
+ "https://huggingface.co/Wan-AI/Wan2.2-Animate-14B/resolve/main/process_checkpoint/det/yolov10m.onnx"
 )
 
+VISION_MODELS=(
+"https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors"
+)
 
 ### ─────────────────────────────────────────────
 ### DO NOT EDIT BELOW UNLESS YOU KNOW WHAT YOU ARE DOING
@@ -54,7 +59,7 @@ function provisioning_start() {
     echo ""
     echo "##############################################"
     echo "#          Provisioning container            #"
-    echo "#     Imran's Flux/Video setup 2026          #"
+    echo "#     Imran's   gazik created    2026        #"
     echo "#        This will take some time            #"
     echo "##############################################"
     echo ""
@@ -70,7 +75,8 @@ function provisioning_start() {
     provisioning_get_files "${COMFYUI_DIR}/models/loras"              "${LORAS_MODELS[@]}"
     provisioning_get_files "${COMFYUI_DIR}/models/vae"                "${VAE_MODELS[@]}"
     provisioning_get_files "${COMFYUI_DIR}/models/diffusion_models"   "${DIFFUSION_MODELS[@]}"
-     provisioning_get_files "${COMFYUI_DIR}/models/detection"         "${DETECTION_MODELS[@]}"
+    provisioning_get_files "${COMFYUI_DIR}/models/detection"          "${DETECTION_MODELS[@]}"
+    provisioning_get_files "${COMFYUI_DIR}/models/clip_vision"        "${VISION_MODELS[@]}"
 
      
     echo ""
