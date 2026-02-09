@@ -30,7 +30,9 @@ CLIP_MODELS=(
     "https://huggingface.co/f5aiteam/CLIP/resolve/main/umt5_xxl_fp8_e4m3fn_scaled.safetensors"
     "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors"
 )
-
+CLIPS=(
+"https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors"
+)
 UNET_MODELS=(
     "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors"
 )
@@ -58,6 +60,7 @@ LORAS=(
 
 DEFFUSION=(
 "https://huggingface.co/Tongyi-MAI/Z-Image/resolve/main/transformer/diffusion_pytorch_model-00001-of-00002.safetensors"
+"https://huggingface.co/Kijai/WanVideo_comfy_fp8_scaled/resolve/main/Wan22Animate/Wan2_2-Animate-14B_fp8_scaled_e4m3fn_KJ_v2.safetensors"
 
 )
 ### ─────────────────────────────────────────────
@@ -80,11 +83,12 @@ function provisioning_start() {
     provisioning_get_pip_packages
 
     provisioning_get_files "${COMFYUI_DIR}/models/clip"               "${CLIP_MODELS[@]}"
-    provisioning_get_files "${COMFYUI_DIR}/models/text_encoders"     "${TEXT_ENCODERS[@]}"
+    provisioning_get_files "${COMFYUI_DIR}/models/clip_vision"        "${CLIP_MODELS[@]}"
+    provisioning_get_files "${COMFYUI_DIR}/models/text_encoders"      "${TEXT_ENCODERS[@]}"
     provisioning_get_files "${COMFYUI_DIR}/models/vae"                "${VAE_MODELS[@]}"
     provisioning_get_files "${COMFYUI_DIR}/models/diffusion_models"   "${DIFFUSION_MODELS[@]}"
 
-    provisioning_get_files "${COMFYUI_DIR}/models/detection"   "${DETECTION[@]}"
+    provisioning_get_files "${COMFYUI_DIR}/models/detection"   "${DETECTION_MODELS[@]}"
     provisioning_get_files "${COMFYUI_DIR}/models/loras"   "${LORAS[@]}"
     provisioning_get_files "${COMFYUI_DIR}/models/upscale_models"     "${UPSCALER_MODELS[@]}"
      provisioning_get_files "${COMFYUI_DIR}/models/diffusion_models"     "${DEFFUSION[@]}"
